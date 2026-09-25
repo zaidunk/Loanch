@@ -380,7 +380,11 @@ function BorrowDashboard({ wallet, pool, navigate }: { wallet: Wallet; pool: Poo
   const data = pool.data
   const loan = data?.activeLoan
   return <>
-    <PageHeader title="Borrow" description="Check your loan status, then prepare a request or repayment." />
+    <PageHeader title="Borrow" description="Check your loan status, then prepare a request or repayment.">
+      <ActionLink href="/app/borrow/request" navigate={navigate}>Request a loan</ActionLink>
+      <ActionLink href="/app/borrow/repay" navigate={navigate} secondary>Repay a loan</ActionLink>
+      <ActionLink href="/app/borrow/stake" navigate={navigate} secondary>Manage stake</ActionLink>
+    </PageHeader>
     <AccessNote wallet={wallet} />
     <PoolNotice pool={pool} />
     <div className="la-dashboard-grid">
@@ -399,9 +403,7 @@ function BorrowDashboard({ wallet, pool, navigate }: { wallet: Wallet; pool: Poo
           <h2>Before you request</h2>
           <p>Risk, reputation, free stake, loan limit, and liquidity are checked on-chain before a request.</p>
           <div className="la-stack-actions">
-            <ActionLink href="/app/borrow/request" navigate={navigate}>Request a loan</ActionLink>
-            <ActionLink href="/app/borrow/repay" navigate={navigate} secondary>Repay a loan</ActionLink>
-            <ActionLink href="/app/borrow/stake" navigate={navigate} secondary>Manage stake</ActionLink>
+            <ActionLink href="/app/borrow/request" navigate={navigate}>Review requirements</ActionLink>
           </div>
         </div>
       </SpotlightCard>
